@@ -38,7 +38,7 @@ function Auth() {
   }
 
   const switchMode = () => {
-    setForm(initialState)
+    setFormData(initialState)
     setIsSignup((prevSignup) => !prevSignup)
     setShowPassword(false)
   }
