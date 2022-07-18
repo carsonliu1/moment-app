@@ -6,7 +6,7 @@ export const signin = (formData, navigate) => async (dispatch) => {
     dispatch({type: 'AUTH', data})
     navigate('/posts')
   } catch(err) {
-    console.log(err)
+    alert(`Your login credentials don't match an account in our system.`)
   }
 }
 
