@@ -34,18 +34,18 @@ function NavBar() {
   return (
     <AppBar className={classes.appBar} position='static' color='inherit'>
       <Link to='/posts' className={classes.brandContainer} >
-        <img src={memoriesLogo} alt='icon' height='100px' width='346px'/>
+        {/* <img src={memoriesLogo} alt='icon' height='100px' width='346px'/> */}
         <img className={classes.image} src={memoriestext} alt='icon' height='100px'/>
       </Link>
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
           <div className={classes.profile}>
-            <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
-              <Typography className={classes.userName} variant='h6'>{user.result.name}</Typography>
-            <Button className={classes.logout} variant='contained' color='secondary' onClick={logout}>Logout</Button>
+            <Avatar className={classes.avatar} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
+              <Typography className={classes.userName} variant='h6'>{user.result.name.split(' ')[0]}</Typography>
+            <Button className={classes.logout} variant='contained' onClick={logout}>Logout</Button>
           </div>
         ) : (
-          <Button component={Link} to='/auth' variant='contained' color='primary'>Sign In</Button>
+          <Button className={classes.buttons} component={Link} to='/auth' variant='contained' >Sign In</Button>
         )}
       </Toolbar>
     </AppBar>

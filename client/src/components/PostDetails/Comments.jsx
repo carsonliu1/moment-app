@@ -47,7 +47,7 @@ function Comments({ post }) {
             disabled={!user?.result}
             >
           </TextField>
-          <Button style={{marginTop: '10px'}} disabled={!comment} color='primary' variant='contained' fullWidth onClick={handleClick}>
+          <Button style={{marginTop: '10px', backgroundColor:'#d76673'}} disabled={!comment} variant='contained' fullWidth onClick={handleClick}>
             Comment
           </Button>
         </div>}

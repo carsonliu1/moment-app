@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useStyles from './styles'
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core'
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt'
-import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined'
+import { AiOutlineHeart, AiFillHeart, AiFillDelete } from "react-icons/ai";
 import DeleteIcon from '@material-ui/icons/Delete'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import moment from 'moment'
@@ -22,9 +21,9 @@ function Post({ post, setCurrentId }) {
     if (post.likes.length > 0) {
       return likes.find((like) => like === (user?.result?.sub || user?.result?._id))
         ? (
-          <><ThumbUpAltIcon fontSize="small" />&nbsp;{likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${likes.length} like${likes.length > 1 ? 's' : ''}` }</>
+          <><AiFillHeart color='pink' size={23} />&nbsp;{likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${likes.length} like${likes.length > 1 ? 's' : ''}` }</>
         ) : (
-          <><ThumbUpAltOutlined fontSize="small" />&nbsp;{likes.length} {likes.length === 1 ? 'Like' : 'Likes'}</>
+          <><AiOutlineHeart color='pink' size={23} />&nbsp;{likes.length} {likes.length === 1 ? 'Like' : 'Likes'}</>
         );
     }
     return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
@@ -56,13 +55,13 @@ function Post({ post, setCurrentId }) {
             <Button style={{color: 'white'}} size='small' onClick={() => setCurrentId(post?._id)}><MoreHorizIcon fontSize='medium' /></Button>
           </div>
         )}
-        <div className={classes.details}>
-          <Typography variant='body2' color='textSecondary'>{post?.tags?.map(tag => `#${tag} `)}</Typography>
-        </div>
-        <Typography className={classes.title} variant='h5' >{post?.title}</Typography>
-        <CardContent>
-          <Typography variant='body2' color='textSecondary' component='p'>{post?.message}</Typography>
+        <Typography className={classes.title} variant='h5' onClick={openPost}>{post?.title}</Typography>
+        <CardContent className={classes.body}>
+          <Typography variant='body2' color='textSecondary'>{post?.message}</Typography>
         </CardContent>
+      </div>
+      <div className={classes.details}>
+        <Typography variant='body2' color='textSecondary'>{post?.tags?.map(tag => `#${tag} `)}</Typography>
       </div>
       <CardActions className={classes.cardActions}>
         <Button size='small' color='primary' disabled={!user?.result} onClick={handleLike}>
@@ -70,8 +69,8 @@ function Post({ post, setCurrentId }) {
         </Button>
         {(user?.result?.sub === post?.creator || user?.result?._id === post?.creator) && (
         <Button size='small' color='primary' onClick={() => dispatch(deletePost(post?._id))}>
-          <DeleteIcon fontSize='small' />
           Delete
+          <AiFillDelete color='black' size={23} />
         </Button>
         )}
       </CardActions>

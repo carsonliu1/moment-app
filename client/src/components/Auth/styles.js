@@ -23,6 +23,8 @@ export default makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    color: 'white',
+    backgroundColor: '#d76673',
   },
   googleButton: {
     marginBottom: theme.spacing(2),

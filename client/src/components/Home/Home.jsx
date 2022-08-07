@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import Posts from '../Posts/Posts'
-import Form from '../Form/Form'
+import Form from '../Form/Form.jsx'
 import Paginate from '../Paginate'
 import useStyles from './styles'
 import { getPosts, getPostsBySearch } from '../../actions/posts'
@@ -52,10 +52,10 @@ function Home() {
           <Posts setCurrentId={setCurrentId}/>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <AppBar className={classes.appBarSearch} position='static' color='inherit'>
+          <AppBar className={classes.appBarSearch} position='static'>
             <TextField name='search' label='Search through Moments' variant='outlined' fullWidth value={search} onChange={(e) => setSearch(e.target.value)} onKeyPress={handleKeyPress}/>
             <ChipInput style={{margin: '10px 0'}} variant='outlined' label='Search Tags' value={tags} onAdd={handleAdd} onDelete={handleDelete} />
-            <Button className={classes.searchButton} color='primary' variant='contained' onClick={searchPost}>Search</Button>
+            <Button className={classes.searchButton} onClick={searchPost} size='medium' >Search</Button>
           </AppBar>
           <Form currentId={currentId} setCurrentId={setCurrentId}/>
           <Paper className={classes.pagination} elevation={6}>

@@ -41,5 +41,15 @@ export default makeStyles((theme) => ({
   },
   commentsInnerContainer: {
     height: '200px', overflowY: 'auto', marginRight: '30px'
+  },
+  title: {
+    marginLeft: '-2px',
+    paddingBottom: '12px'
+  },
+  tags: {
+    paddingBottom: '5px'
+  },
+  message: {
+    paddingBottom: '13px'
   }
 }));

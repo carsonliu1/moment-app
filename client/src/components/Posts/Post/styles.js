@@ -34,21 +34,28 @@ export default makeStyles({
   grid: {
     display: 'flex',
   },
+  title: {
+    paddingTop: '10px',
+    margin: '0 16px',
+    width: 'max-content',
+    borderBottom: '3px solid #D76673',
+    cursor: 'pointer',
+  },
+  cardActions: {
+    padding: '0 16px 8px 10px',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  cardAction: {
+    display: 'block',
+    textAlign: 'initial',
+  },
   details: {
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '20px',
+    margin: '0 16px'
   },
-  title: {
-    padding: '0 16px',
-  },
-  cardActions: {
-    padding: '0 16px 8px 16px',
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-    cardAction: {
-      display: 'block',
-      textAlign: 'initial',
-    },
+  body: {
+    minHeight: '200px',
+  }
 });

@@ -42,12 +42,12 @@ function PostDetails() {
   const recommendedPosts = posts.filter(({ _id }) => _id !== post._id)
 
   return (
-    <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
+    <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={7}>
       <div className={classes.card}>
         <div className={classes.section}>
-          <Typography variant="h3" component="h2">{post.title}</Typography>
-          <Typography variant="h6" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
-          <Typography variant="body1" component="p">{post.message}</Typography>
+          <Typography className={classes.title} variant="h3" component="h2">{post.title}</Typography>
+          <Typography className={classes.message} variant="body1" component="p">{post.message}</Typography>
+          <Typography className={classes.tags} variant="h6" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
           <Typography variant="h6">Created by: {post.name}</Typography>
           <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
           <Divider style={{ margin: '20px 0' }} />
@@ -64,12 +64,12 @@ function PostDetails() {
           <Divider />
           <div className={classes.recommendedPosts}>
             {recommendedPosts?.map(({ title, message, name, likes, selectedFile, _id}) => (
-              <div style={{ margin: '20px', cursor:'pointer'}} onClick={() => openPost(_id)} key={_id}>
-                <Typography gutterBottom variant="h6">{title}</Typography>
-                <Typography gutterBottom variant="subtitle2">{name}</Typography>
-                <Typography gutterBottom variant="subtitle2">{message}</Typography>
-                <Typography gutterBottom variant="subtitle1">Likes: {likes?.length}</Typography>
-                <img src={selectedFile} width="200px" />
+              <div style={{ margin: '3px'}} key={_id}>
+                <Typography style={{marginLeft: '-2px', cursor:'pointer'}} onClick={() => openPost(_id)} variant="h6">{title}</Typography>
+                <Typography variant="subtitle1">{name}</Typography>
+                <Typography variant="subtitle2">{message}</Typography>
+                <Typography variant="subtitle2">Likes: {likes?.length}</Typography>
+                <img style={{cursor:'pointer'}} onClick={() => openPost(_id)} src={selectedFile} width="200px" />
               </div>
             ))}
           </div>

@@ -80,11 +80,11 @@ function Auth() {
             <Input name='password' label='Password' handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
             {isSignup && <Input name='confirmPassword' label='Confirm Password' handleChange={handleChange} type='password'/>}
           </Grid>
-          <Button className={classes.submit} type='submit' variant='contained' color='primary' fullWidth>
+          <Button className={classes.submit} type='submit' variant='contained' fullWidth>
             {isSignup ? 'Sign Up' : 'Sign In'}
           </Button>
           <GoogleLogin
-            render={( renderProps) => (
+            render={renderProps => (
               <Button
                 className={classes.googleButton}
                 color='primary'
