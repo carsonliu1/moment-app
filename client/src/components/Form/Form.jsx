@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import useStyles from './styles'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux'
 import { TextField, Button, Typography, Paper } from '@material-ui/core'
@@ -51,9 +52,9 @@ function Form({ currentId, setCurrentId }) {
   if(!user?.result?.name) {
     return (
       <Paper className={classes.paper} elevation={6}>
-        <Typography variant='h6' align='center'>
-          Please Sign In to create your own Moments
-        </Typography>
+        <Notice>
+          <Link to ='/auth' style={{ textDecoration: 'none', color: '#d76673', fontWeight: '700'}}> Sign in</Link> to create your own Moments
+        </Notice>
       </Paper>
     )
   }
@@ -68,20 +69,25 @@ function Form({ currentId, setCurrentId }) {
         <FileInput>
           <FileBase type='file' multple={false} onDone={({ base64 }) => setPostData({...postData, selectedFile: base64})}/>
         </FileInput>
-        <SubmitButton className={classes.buttonSubmit} variant='contained' size='medium' type='submit' fullWidth>SUBMIT</SubmitButton>
-        <Button className={classes.buttonClear} variant='contained' size='medium' onClick={clear} fullWidth>Clear</Button>
+        <SubmitButton variant='contained' size='medium' type='submit' >SUBMIT</SubmitButton>
+        <ClearButton variant='contained' size='medium' onClick={clear} >CLEAR</ClearButton>
       </form>
     </Paper>
   )
 }
 
+const Notice = styled.p`
+  text-align: center;
+  font-weight: 500;
+`
+
 const SubmitButton = styled.button`
-  margin-bottom: 10;
+  margin-bottom: 10px;
   background-color: #d76673;
   color: white;
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: 600;
-  width: 100%;
+  width: 96%;
   height: 35px;
   border: none;
   cursor: pointer;
@@ -91,25 +97,25 @@ const SubmitButton = styled.button`
   }
 `
 
-// buttonSubmit: {
-//   marginBottom: 10,
-//   backgroundColor: '#d76673',
-//   color: 'white',
-//   borderRadius: '10px',
-//   fontWeight: 600,
-// },
-// buttonClear: {
-//   marginBottom: 10,
-//   color: 'white',
-//   borderRadius: '10px',
-//   fontWeight: 600,
-// },
+const ClearButton = styled.button`
+  background-color: transparent;
+  margin-bottom: 10px;
+  color: gray;
+  border-radius: 8px;
+  font-weight: 600;
+  width: 96%;
+  height: 35px;
+  border: 1px solid #D3D3D3;
+  &:hover {
+    transform: scale(1.02);
+  }
+`
 
 const FileInput = styled.div`
-  width: 100%;
+  width: 96%;
   margin: 10px 0;
   & input[type="file" i]::-webkit-file-upload-button {
-    border-radius: 7px;
+    border-radius: 8px;
     color: white;
     background-color: #d76673;
     border: none;

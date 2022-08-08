@@ -26,6 +26,9 @@ function Comments({ post }) {
       <div className={classes.commentsOuterContainer}>
         <div className={classes.commentsInnerContainer}>
           <Typography variant='h6'>Comments</Typography>
+          <br></br>
+          <br></br>
+          <br></br>
           {comments.map((comment, index) => (
               <Typography key={index} variant='subtitle1'>
                 <strong>{comment.split(': ')[0]}: </strong>
@@ -34,20 +37,19 @@ function Comments({ post }) {
           ))}
           <div ref={commentsRef}/>
         </div>
-        {user?.result?.name && <div style={{width: '70%'}}>
-          <Typography variant='h6'>Write a comment</Typography>
+        {user?.result?.name && <div style={{width: '50%'}}>
           <TextField
+            className={classes.commentForm}
             label='Comment'
             variant='outlined'
             multiline
-            minRows={4}
+            minRows={12}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            fullWidth
             disabled={!user?.result}
             >
           </TextField>
-          <Button style={{marginTop: '10px', backgroundColor:'#d76673'}} disabled={!comment} variant='contained' fullWidth onClick={handleClick}>
+          <Button className={classes.commentButton} disabled={!comment} variant='contained' onClick={handleClick}>
             Comment
           </Button>
         </div>}

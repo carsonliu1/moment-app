@@ -9,28 +9,15 @@ export default makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     backgroundColor: '#FFF4F0',
-    borderRadius: '12px'
+    borderRadius: '12px',
+    fontSize: '17px',
+    color: 'gray',
+    fontWeight: '100',
+    fontFamily: "Times New Roman",
   },
   form: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-  },
-  fileInput: {
-    width: '97%',
-    margin: '10px 0',
-  },
-  buttonSubmit: {
-    marginBottom: 10,
-    backgroundColor: '#d76673',
-    color: 'white',
-    borderRadius: '10px',
-    fontWeight: 600,
-  },
-  buttonClear: {
-    marginBottom: 10,
-    color: 'white',
-    borderRadius: '10px',
-    fontWeight: 600,
   },
 }));

@@ -4,7 +4,7 @@ export default makeStyles(() => ({
   ul: {
     justifyContent: 'space',
     "& .MuiPaginationItem-root": {
-      color: "black"
+      color: "black",
     }
   }
 }))

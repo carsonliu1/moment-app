@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useStyles from './styles'
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core'
-import { AiOutlineHeart, AiFillHeart, AiFillDelete } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { MdOutlineDeleteOutline } from "react-icons/md"
 import DeleteIcon from '@material-ui/icons/Delete'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import moment from 'moment'
@@ -21,12 +22,12 @@ function Post({ post, setCurrentId }) {
     if (post.likes.length > 0) {
       return likes.find((like) => like === (user?.result?.sub || user?.result?._id))
         ? (
-          <><AiFillHeart color='pink' size={23} />&nbsp;{likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${likes.length} like${likes.length > 1 ? 's' : ''}` }</>
+          <><AiFillHeart color='pink' size={23} />&nbsp;{likes.length} LIKES</>
         ) : (
           <><AiOutlineHeart color='pink' size={23} />&nbsp;{likes.length} {likes.length === 1 ? 'Like' : 'Likes'}</>
         );
     }
-    return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
+    return <><AiOutlineHeart fontSize="small" />&nbsp;Like</>;
   };
 
   const handleLike = () => {
@@ -55,7 +56,7 @@ function Post({ post, setCurrentId }) {
             <Button style={{color: 'white'}} size='small' onClick={() => setCurrentId(post?._id)}><MoreHorizIcon fontSize='medium' /></Button>
           </div>
         )}
-        <Typography className={classes.title} variant='h5' onClick={openPost}>{post?.title}</Typography>
+        <h5 className={classes.title} onClick={openPost}>{post?.title}</h5>
         <CardContent className={classes.body}>
           <Typography variant='body2' color='textSecondary'>{post?.message}</Typography>
         </CardContent>
@@ -68,10 +69,14 @@ function Post({ post, setCurrentId }) {
           {Likes()}
         </Button>
         {(user?.result?.sub === post?.creator || user?.result?._id === post?.creator) && (
+        <div style={{display: 'flex', justifyContent:'center'}}>
         <Button size='small' color='primary' onClick={() => dispatch(deletePost(post?._id))}>
           Delete
-          <AiFillDelete color='black' size={23} />
         </Button>
+        <div style={{marginTop:'4px', marginRight: '5px', cursor:'pointer '}}>
+        <MdOutlineDeleteOutline color='gray' size={20} onClick={() => dispatch(deletePost(post?._id))}/>
+        </div>
+        </div>
         )}
       </CardActions>
     </Card>

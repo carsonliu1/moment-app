@@ -9,7 +9,7 @@ export default makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '10px 50px',
+    // padding: '10px 50px',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
     },
@@ -19,9 +19,6 @@ export default makeStyles((theme) => ({
     textDecoration: 'none',
     fontSize: '2em',
     fontWeight: 300,
-  },
-  image: {
-    marginTop: '5px',
   },
   toolbar: {
     display: 'flex',
@@ -42,11 +39,6 @@ export default makeStyles((theme) => ({
       justifyContent: 'center',
     },
   },
-  logout: {
-    marginLeft: '20px',
-    backgroundColor: '#D76673',
-    color: 'white',
-  },
   userName: {
     display: 'flex',
     alignItems: 'center',
@@ -64,5 +56,8 @@ export default makeStyles((theme) => ({
   buttons: {
     color: 'white',
     backgroundColor: '#D76673',
+  },
+  image: {
+    marginLeft: '10px'
   }
 }));

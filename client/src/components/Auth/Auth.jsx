@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import styled from 'styled-components';
 import { Avatar, Container, Button, Typography, Grid, Paper } from '@material-ui/core'
 import { GoogleLogin } from '@react-oauth/google'
 import Input from './Input.jsx'
@@ -9,6 +10,25 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import useStyles from './styles'
 import jwt_decode from 'jwt-decode'
 import { signin, signup } from '../../actions/auth'
+
+const SignInButton = styled.button`
+  margin: 15px 0;
+  background-color: #D76673;
+  color: white;
+  border: none;
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  &:hover {
+    transform: scale(1.02);
+  }
+`
+
+const GoogleButton = styled.div`
+  width: 100% !important;
+`
 
 const initialState= {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
 
@@ -80,9 +100,10 @@ function Auth() {
             <Input name='password' label='Password' handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
             {isSignup && <Input name='confirmPassword' label='Confirm Password' handleChange={handleChange} type='password'/>}
           </Grid>
-          <Button className={classes.submit} type='submit' variant='contained' fullWidth>
-            {isSignup ? 'Sign Up' : 'Sign In'}
-          </Button>
+          <SignInButton type='submit'>
+            {isSignup ? 'SIGN UP' : 'SIGN IN'}
+          </SignInButton>
+          <GoogleButton>
           <GoogleLogin
             render={renderProps => (
               <Button
@@ -99,13 +120,12 @@ function Auth() {
             onFailure={googleFailure}
             cookiePolicy='single_host_origin'
           />
-          <Grid container justifyContent='flex-end'>
-            <Grid item>
-              <Button onClick={switchMode}>
-                {isSignup ? 'Already have an Account? Sign In' : `Don't have an Account? sign up`}
-              </Button>
-            </Grid>
-          </Grid>
+        </GoogleButton>
+        <div style={{display:'flex', justifyContent:'flex-end', marginTop: '10px'}}>
+          <Button style={{fontSize: '10px'}} onClick={switchMode}>
+            {isSignup ? 'Already have an Account? Sign In' : `Don't have an Account? sign up`}
+          </Button>
+        </div>
         </form>
       </Paper>
     </Container>

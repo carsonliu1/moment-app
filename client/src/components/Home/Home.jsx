@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import styled from 'styled-components'
 import Posts from '../Posts/Posts'
 import Form from '../Form/Form.jsx'
 import Paginate from '../Paginate'
@@ -12,6 +13,20 @@ import ChipInput from 'material-ui-chip-input'
 function useQuery() {
   return new URLSearchParams(useLocation().search)
 }
+
+const SearchButton = styled.button`
+  background-color: #D76673;
+  color: white;
+  border: none;
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  &:hover {
+    transform: scale(1.02);
+  }
+`
 
 function Home() {
 
@@ -50,17 +65,17 @@ function Home() {
       <Grid className={classes.gridContainer} container justifyContent='space-between' alignItems='stretch' spacing={3}>
         <Grid item xs={12} sm={6} md={9}>
           <Posts setCurrentId={setCurrentId}/>
+          <div className={classes.pagination}>
+            <Paginate page={page}/>
+          </div>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <AppBar className={classes.appBarSearch} position='static'>
             <TextField name='search' label='Search through Moments' variant='outlined' fullWidth value={search} onChange={(e) => setSearch(e.target.value)} onKeyPress={handleKeyPress}/>
             <ChipInput style={{margin: '10px 0'}} variant='outlined' label='Search Tags' value={tags} onAdd={handleAdd} onDelete={handleDelete} />
-            <Button className={classes.searchButton} onClick={searchPost} size='medium' >Search</Button>
+            <SearchButton onClick={searchPost} size='medium' >SEARCH</SearchButton>
           </AppBar>
           <Form currentId={currentId} setCurrentId={setCurrentId}/>
-          <Paper className={classes.pagination} elevation={6}>
-            <Paginate page={page}/>
-          </Paper>
         </Grid>
       </Grid>
     </Container>

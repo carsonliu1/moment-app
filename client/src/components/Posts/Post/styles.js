@@ -35,11 +35,11 @@ export default makeStyles({
     display: 'flex',
   },
   title: {
+    margin: '10px 14px',
     paddingTop: '10px',
-    margin: '0 16px',
     width: 'max-content',
-    borderBottom: '3px solid #D76673',
     cursor: 'pointer',
+    fontSize: '28px'
   },
   cardActions: {
     padding: '0 16px 8px 10px',

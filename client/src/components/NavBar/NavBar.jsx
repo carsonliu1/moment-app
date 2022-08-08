@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import memoriestext from '../../images/memories-Text.png'
 import memoriesLogo from '../../images/logo.png'
@@ -6,6 +7,22 @@ import { useDispatch } from 'react-redux'
 import { AppBar, Typography, Avatar, Button, Toolbar } from '@material-ui/core'
 import useStyles from './styles'
 import decode from 'jwt-decode'
+
+
+const AuthButton = styled.button`
+  margin-left: 20px;
+  background-color: #D76673;
+  color: white;
+  border: none;
+  width: 85px;
+  height: 37px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  &:hover {
+    transform: scale(1.04);
+  }
+`
 
 function NavBar() {
 
@@ -34,22 +51,22 @@ function NavBar() {
   return (
     <AppBar className={classes.appBar} position='static' color='inherit'>
       <Link to='/posts' className={classes.brandContainer} >
-        {/* <img src={memoriesLogo} alt='icon' height='100px' width='346px'/> */}
-        <img className={classes.image} src={memoriestext} alt='icon' height='100px'/>
+        <img className={classes.image} src={memoriestext} alt='icon' height='110px'/>
       </Link>
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
           <div className={classes.profile}>
             <Avatar className={classes.avatar} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
-              <Typography className={classes.userName} variant='h6'>{user.result.name.split(' ')[0]}</Typography>
-            <Button className={classes.logout} variant='contained' onClick={logout}>Logout</Button>
+              {/* <Typography className={classes.userName} variant='h6'>{user.result.name}</Typography> */}
+            <AuthButton onClick={logout}>LOGOUT</AuthButton>
           </div>
         ) : (
-          <Button className={classes.buttons} component={Link} to='/auth' variant='contained' >Sign In</Button>
+          <AuthButton>
+            <Link to ='/auth' style={{ textDecoration: 'none', color: 'white', fontWeight: '700'}}>SIGN IN</Link>
+          </AuthButton>
         )}
       </Toolbar>
     </AppBar>
   )
 }
-
 export default NavBar

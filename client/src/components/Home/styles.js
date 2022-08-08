@@ -12,7 +12,10 @@ export default makeStyles((theme) => ({
     borderRadius: '10px',
     marginTop: '1rem',
     padding: '16px',
-    backgroundColor: '#fef4f0'
+    backgroundColor: 'transparent',
+    display: 'flex',
+    justifyContent: 'center',
+
   },
   gridContainer: {
     [theme.breakpoints.down('xs')]: {
