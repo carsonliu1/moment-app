@@ -26,8 +26,10 @@ const SignInButton = styled.button`
   }
 `
 
-const GoogleButton = styled.div`
-  width: 100% !important;
+const Wrapper = styled.div`
+  & #container {
+    display: none;
+  }
 `
 
 const initialState= {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
@@ -78,7 +80,7 @@ function Auth() {
   }
 
   return (
-    <Container component='main' maxWidth='xs'>
+    <Container maxWidth='xs'>
       <Paper className={classes.paper} elevation={3}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -103,24 +105,13 @@ function Auth() {
           <SignInButton type='submit'>
             {isSignup ? 'SIGN UP' : 'SIGN IN'}
           </SignInButton>
-          <GoogleButton>
+          <Wrapper>
           <GoogleLogin
-            render={renderProps => (
-              <Button
-                className={classes.googleButton}
-                color='primary'
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-                startIcon={<Icon />}
-              >
-                Google Sign In
-              </Button>
-            )}
             onSuccess={googleSuccess}
             onFailure={googleFailure}
             cookiePolicy='single_host_origin'
           />
-        </GoogleButton>
+          </Wrapper>
         <div style={{display:'flex', justifyContent:'flex-end', marginTop: '10px'}}>
           <Button style={{fontSize: '10px'}} onClick={switchMode}>
             {isSignup ? 'Already have an Account? Sign In' : `Don't have an Account? sign up`}
