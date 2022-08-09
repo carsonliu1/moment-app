@@ -9,9 +9,14 @@ export default makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
+    '& label.Mui-focused': {
+      color: '#d76673',
     },
+    '& .MuiOutlinedInput-root': {
+      '&.Mui-focused fieldset': {
+        borderColor: '#d76673',
+      },
+    }
   },
   avatar: {
     margin: theme.spacing(1),
