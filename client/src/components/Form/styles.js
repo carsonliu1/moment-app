@@ -5,6 +5,14 @@ export default makeStyles((theme) => ({
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
     },
+    '& label.Mui-focused': {
+      color: '#d76673',
+    },
+    '& .MuiOutlinedInput-root': {
+      '&.Mui-focused fieldset': {
+        borderColor: '#d76673',
+      },
+    }
   },
   paper: {
     padding: theme.spacing(2),
@@ -13,7 +21,7 @@ export default makeStyles((theme) => ({
     fontSize: '17px',
     color: 'gray',
     fontWeight: '100',
-    fontFamily: "Times New Roman",
+    fontFamily: 'Times New Roman',
   },
   form: {
     display: 'flex',

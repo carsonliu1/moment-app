@@ -8,6 +8,70 @@ import FileBase from 'react-file-base64'
 import { createPost, updatePost } from '../../actions/posts'
 import { useNavigate } from 'react-router-dom'
 
+const Notice = styled.p`
+  text-align: center;
+  font-weight: 500;
+`
+
+const SubmitButton = styled.button`
+  margin-bottom: 10px;
+  background-color: #d76673;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  width: 96%;
+  height: 35px;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #d76673;
+    transform: scale(1.02);
+  }
+`
+
+const ClearButton = styled.div`
+  background-color: transparent;
+  text-align: center;
+  margin-bottom: 10px;
+  color: gray;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 35px;
+  width: 96%;
+  height: 35px;
+  border: 1px solid #D3D3D3;
+  cursor:pointer;
+  &:hover {
+    transform: scale(1.02);
+  }
+`
+
+const FileInput = styled.div`
+  width: 96%;
+  margin: 10px 0;
+  & input[type="file" i]::-webkit-file-upload-button {
+    border-radius: 8px;
+    color: white;
+    background-color: #d76673;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    width: 40%;
+    height: 25px;
+    font-size: 11px;
+    text-transform: uppercase;
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+`
+
+const Wrapper = styled.div`
+  & label.Mui-focused {
+    color: "green"
+  }
+`
 
 function Form({ currentId, setCurrentId }) {
 
@@ -61,74 +125,21 @@ function Form({ currentId, setCurrentId }) {
 
   return (
     <Paper className={classes.paper} elevation={6}>
-      <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
+      <form autoComplete='off' className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <Typography variant='h6'>{currentId ? 'Editing a Moment' : 'Create a Moment'}</Typography>
-        <TextField name='title' variant='outlined' label='Title' fullWidth value={postData.title} onChange={(e) => setPostData({...postData, title: e.target.value})}/>
-        <TextField name='message' variant='outlined' label='Message' fullWidth multiline minRows={5} fullWidth value={postData.message} onChange={(e) => setPostData({...postData, message: e.target.value})}/>
-        <TextField name='tags' variant='outlined' label='Tags' fullWidth value={postData.tags} onChange={(e) => setPostData({...postData, tags: e.target.value.split(',')})}/>
+        <TextField name='title' variant='outlined' label='Title' fullWidth value={postData.title} onChange={(e) => setPostData({...postData, title: e.target.value})} required/>
+        <TextField name='message' variant='outlined' label='Message' placeholder='Today I .....' fullWidth multiline minRows={7} fullWidth value={postData.message} onChange={(e) => setPostData({...postData, message: e.target.value})} required/>
+        <TextField name='tags' variant='outlined' label='Tags' placeholder='tokyo,seoul,london,new york' fullWidth value={postData.tags} onChange={(e) => setPostData({...postData, tags: e.target.value.split(',')})} required/>
         <FileInput>
-          <FileBase type='file' multple={false} onDone={({ base64 }) => setPostData({...postData, selectedFile: base64})}/>
+          <FileBase type='file' multiple={false} onDone={({ base64 }) => setPostData({...postData, selectedFile: base64})}/>
         </FileInput>
-        <SubmitButton variant='contained' size='medium' type='submit' >SUBMIT</SubmitButton>
+        <SubmitButton type='submit' variant='contained' size='medium'>SUBMIT</SubmitButton>
         <ClearButton variant='contained' size='medium' onClick={clear} >CLEAR</ClearButton>
       </form>
     </Paper>
   )
 }
 
-const Notice = styled.p`
-  text-align: center;
-  font-weight: 500;
-`
-
-const SubmitButton = styled.button`
-  margin-bottom: 10px;
-  background-color: #d76673;
-  color: white;
-  border-radius: 8px;
-  font-weight: 600;
-  width: 96%;
-  height: 35px;
-  border: none;
-  cursor: pointer;
-  &:hover {
-    background-color: #d76673;
-    transform: scale(1.02);
-  }
-`
-
-const ClearButton = styled.button`
-  background-color: transparent;
-  margin-bottom: 10px;
-  color: gray;
-  border-radius: 8px;
-  font-weight: 600;
-  width: 96%;
-  height: 35px;
-  border: 1px solid #D3D3D3;
-  &:hover {
-    transform: scale(1.02);
-  }
-`
-
-const FileInput = styled.div`
-  width: 96%;
-  margin: 10px 0;
-  & input[type="file" i]::-webkit-file-upload-button {
-    border-radius: 8px;
-    color: white;
-    background-color: #d76673;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    width: 40%;
-    height: 25px;
-    font-size: 11px;
-    text-transform: uppercase;
-    &:hover {
-      transform: scale(1.03);
-    }
-  }
-`
+// InputLabelProps={{ shrink: true }}
 
 export default Form

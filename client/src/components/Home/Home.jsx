@@ -5,7 +5,7 @@ import Posts from '../Posts/Posts'
 import Form from '../Form/Form.jsx'
 import Paginate from '../Paginate'
 import useStyles from './styles'
-import { getPosts, getPostsBySearch } from '../../actions/posts'
+import { getPostsBySearch } from '../../actions/posts'
 import { Container, Grow, Grid, Paper, AppBar, TextField, Button } from '@material-ui/core'
 import { useNavigate, useLocation } from 'react-router-dom'
 import ChipInput from 'material-ui-chip-input'
@@ -60,9 +60,8 @@ function Home() {
 
 
   return (
-    <Grow in >
     <Container maxWidth='xl'>
-      <Grid className={classes.gridContainer} container justifyContent='space-between' alignItems='stretch' spacing={3}>
+      <Grid className={classes.gridContainer} container spacing={3}>
         <Grid item xs={12} sm={6} md={9}>
           <Posts setCurrentId={setCurrentId}/>
           <div className={classes.pagination}>
@@ -70,7 +69,7 @@ function Home() {
           </div>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <AppBar className={classes.appBarSearch} position='static'>
+          <AppBar className={`${classes.appBarSearch} ${classes.root}`}>
             <TextField name='search' label='Search through Moments' variant='outlined' fullWidth value={search} onChange={(e) => setSearch(e.target.value)} onKeyPress={handleKeyPress}/>
             <ChipInput style={{margin: '10px 0'}} variant='outlined' label='Search Tags' value={tags} onAdd={handleAdd} onDelete={handleDelete} />
             <SearchButton onClick={searchPost} size='medium' >SEARCH</SearchButton>
@@ -79,7 +78,6 @@ function Home() {
         </Grid>
       </Grid>
     </Container>
-  </Grow>
   )
 }
 

@@ -9,9 +9,10 @@ export default makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    // padding: '10px 50px',
+    position: 'static',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
+      paddingBottom: '20px',
     },
   },
   heading: {

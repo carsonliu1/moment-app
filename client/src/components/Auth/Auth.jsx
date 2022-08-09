@@ -18,17 +18,11 @@ const SignInButton = styled.button`
   border: none;
   width: 100%;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 7px;
   cursor: pointer;
   font-weight: 600;
   &:hover {
     transform: scale(1.02);
-  }
-`
-
-const Wrapper = styled.div`
-  & #container {
-    display: none;
   }
 `
 
@@ -105,18 +99,16 @@ function Auth() {
           <SignInButton type='submit'>
             {isSignup ? 'SIGN UP' : 'SIGN IN'}
           </SignInButton>
-          <Wrapper>
           <GoogleLogin
             onSuccess={googleSuccess}
             onFailure={googleFailure}
             cookiePolicy='single_host_origin'
           />
-          </Wrapper>
-        <div style={{display:'flex', justifyContent:'flex-end', marginTop: '10px'}}>
-          <Button style={{fontSize: '10px'}} onClick={switchMode}>
-            {isSignup ? 'Already have an Account? Sign In' : `Don't have an Account? sign up`}
-          </Button>
-        </div>
+          <div style={{display:'flex', justifyContent:'flex-end', marginTop: '10px'}}>
+            <Button style={{fontSize: '10px'}} onClick={switchMode}>
+              {isSignup ? 'Already have an Account? Sign In' : `Don't have an Account? sign up`}
+            </Button>
+          </div>
         </form>
       </Paper>
     </Container>

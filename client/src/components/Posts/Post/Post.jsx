@@ -8,7 +8,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import moment from 'moment'
 import { useDispatch } from 'react-redux'
-import { deletePost, likePost } from '../../../actions/posts'
+import { deletePost, likePost, getPosts } from '../../../actions/posts'
 
 function Post({ post, setCurrentId }) {
 
@@ -27,7 +27,7 @@ function Post({ post, setCurrentId }) {
           <><AiOutlineHeart color='pink' size={23} />&nbsp;{likes.length} {likes.length === 1 ? 'Like' : 'Likes'}</>
         );
     }
-    return <><AiOutlineHeart fontSize="small" />&nbsp;Like</>;
+    return <><AiOutlineHeart color='pink' size={23}/>&nbsp;Like</>;
   };
 
   const handleLike = () => {
@@ -42,6 +42,10 @@ function Post({ post, setCurrentId }) {
   }
 
   const openPost = () => navigate(`/posts/${post._id}`)
+
+  const reload = () => {
+    setTimeout(window.location.reload(), 1000)
+  }
 
   return (
     <Card className={classes.card} raised elevation={6}>
@@ -70,12 +74,18 @@ function Post({ post, setCurrentId }) {
         </Button>
         {(user?.result?.sub === post?.creator || user?.result?._id === post?.creator) && (
         <div style={{display: 'flex', justifyContent:'center'}}>
-        <Button size='small' color='primary' onClick={() => dispatch(deletePost(post?._id))}>
-          Delete
-        </Button>
-        <div style={{marginTop:'4px', marginRight: '5px', cursor:'pointer '}}>
-        <MdOutlineDeleteOutline color='gray' size={20} onClick={() => dispatch(deletePost(post?._id))}/>
-        </div>
+          <Button size='small' color='primary' onClick={() => {
+            dispatch(deletePost(post?._id))
+            reload()
+            }}>
+            Delete
+          </Button>
+          <div style={{marginTop:'4px', marginRight: '5px', cursor:'pointer '}}>
+            <MdOutlineDeleteOutline color='gray' size={20} onClick={() => {
+              dispatch(deletePost(post?._id))
+              reload()
+              }}/>
+          </div>
         </div>
         )}
       </CardActions>
