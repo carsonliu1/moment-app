@@ -4,18 +4,19 @@ export default makeStyles((theme) => ({
   media: {
     borderRadius: '20px',
     objectFit: 'cover',
-    width: '100%',
-    maxHeight: '600px',
+    width: '800px',
+    maxHeight: '800px',
     marginBottom: '50px',
-    [theme.breakpoints.down('lg')]: {
-      marginTop: '30px'
+    [theme.breakpoints.down('md')]: {
+      marginTop: '30px',
+      width: '100%',
+      height: '100%'
     },
   },
   card: {
     display: 'flex',
     width: '100%',
-    [theme.breakpoints.down('lg')]: {
-      // flexWrap: 'wrap',
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
     },
   },
@@ -28,7 +29,11 @@ export default makeStyles((theme) => ({
     flexDirection: 'column'
   },
   imageSection: {
+    marginTop: '20px',
     marginLeft: '20px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     [theme.breakpoints.down('md')]: {
       marginLeft: 0,
     },
@@ -51,13 +56,16 @@ export default makeStyles((theme) => ({
   },
   title: {
     marginLeft: '-2px',
+    marginBottom:'15px',
     paddingBottom: '12px'
   },
   tags: {
-    paddingBottom: '5px'
+    paddingBottom: '5px',
+    margin:'15px 0',
   },
   message: {
-    paddingBottom: '13px'
+    paddingBottom: '13px',
+    margin:'15px 0',
   },
   relatedCard: {
     display: 'flex',
