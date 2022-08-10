@@ -7,12 +7,15 @@ export default makeStyles((theme) => ({
     width: '100%',
     maxHeight: '600px',
     marginBottom: '50px',
+    [theme.breakpoints.down('lg')]: {
+      marginTop: '30px'
+    },
   },
   card: {
     display: 'flex',
     width: '100%',
-    [theme.breakpoints.down('md')]: {
-      flexWrap: 'wrap',
+    [theme.breakpoints.down('lg')]: {
+      // flexWrap: 'wrap',
       flexDirection: 'column',
     },
   },

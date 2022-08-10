@@ -37,9 +37,9 @@ export default makeStyles({
   title: {
     margin: '10px 14px',
     paddingTop: '10px',
-    width: 'max-content',
+    width: '100%',
     cursor: 'pointer',
-    fontSize: '28px'
+    fontSize: '26px'
   },
   cardActions: {
     padding: '0 16px 8px 10px',
