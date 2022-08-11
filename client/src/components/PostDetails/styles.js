@@ -99,6 +99,14 @@ export default makeStyles((theme) => ({
   commentForm: {
     width: '60%',
     marginTop: '90px',
+    '& label.Mui-focused': {
+      color: '#d76673',
+    },
+    '& .MuiOutlinedInput-root': {
+      '&.Mui-focused fieldset': {
+        borderColor: '#d76673',
+      },
+    },
     [theme.breakpoints.down('md')]: {
       width: '100%',
     },
