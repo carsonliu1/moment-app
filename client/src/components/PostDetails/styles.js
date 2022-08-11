@@ -36,6 +36,7 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     [theme.breakpoints.down('md')]: {
       marginLeft: 0,
+      paddingRight: '20px',
     },
   },
   recommendedPosts: {
@@ -104,7 +105,7 @@ export default makeStyles((theme) => ({
   },
   cardMedia: {
     height: 0,
-    paddingTop: '56.25%',
+    paddingTop: '50%',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     backgroundBlendMode: 'darken',
     cursor: 'pointer'
@@ -118,5 +119,15 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       width: '100%',
     },
-  }
+  },
+  container: {
+    padding: '20px',
+    borderRadius: '15px',
+    width:'95%',
+    marginLeft:'20px',
+    [theme.breakpoints.down('md')]: {
+      marginLeft:'0px',
+      paddingRight: '0px'
+    },
+  },
 }));

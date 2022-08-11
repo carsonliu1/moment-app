@@ -42,7 +42,7 @@ function PostDetails() {
   const recommendedPosts = posts.filter(({ _id }) => _id !== post._id)
 
   return (
-    <Paper style={{ padding: '20px', borderRadius: '15px', width:'95%', marginLeft:'20px' }} elevation={7}>
+    <Paper className={classes.container} elevation={7}>
       <div className={classes.card}>
         <div className={classes.section}>
           <Typography className={classes.title} variant="h3" component="h2">{post.title}</Typography>
