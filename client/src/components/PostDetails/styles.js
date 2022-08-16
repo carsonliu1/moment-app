@@ -133,9 +133,23 @@ export default makeStyles((theme) => ({
     borderRadius: '15px',
     width:'95%',
     marginLeft:'20px',
+    animation: '$fade-in 1s ease-in',
     [theme.breakpoints.down('md')]: {
       marginLeft:'0px',
       paddingRight: '0px'
     },
+  },
+  "@keyframes fade-in": {
+    "0%": {
+      opacity: 0,
+      transform: 'translateY(-5%)',
+    },
+    "50%": {
+      opacity: 0.4,
+    },
+    "100%": {
+      opacity: 1,
+      transform: 'translateY(0%)',
+    }
   },
 }));

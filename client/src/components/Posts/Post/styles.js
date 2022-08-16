@@ -18,6 +18,7 @@ export default makeStyles({
     borderRadius: '20px',
     height: '100%',
     position: 'relative',
+    animation: `$fade-in 0.5s ease-in`,
   },
   overlay: {
     position: 'absolute',
@@ -57,5 +58,26 @@ export default makeStyles({
   },
   body: {
     minHeight: '200px',
-  }
+  },
+  "@keyframes fade-in": {
+    "0%": {
+      opacity: 0,
+      transform: 'translateY(-10%)',
+    },
+    "50%": {
+      opacity: 0.4,
+    },
+    "100%": {
+      opacity: 1,
+      transform: 'translateY(0%)',
+    }
+  },
+  "@keyframes rotate": {
+    "0%": {
+      transform: 'rotate(0deg)'
+    },
+    "100%": {
+      transform: 'rotate(360deg)'
+    },
+  },
 });
