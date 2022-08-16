@@ -37,7 +37,7 @@ export default makeStyles({
   title: {
     margin: '10px 14px',
     paddingTop: '10px',
-    width: '100%',
+    width: '90%',
     cursor: 'pointer',
     fontSize: '26px'
   },
