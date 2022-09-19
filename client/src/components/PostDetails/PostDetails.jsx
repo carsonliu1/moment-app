@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
 import { getPost, getPostsBySearch } from '../../actions/posts'
 import { useParams, useNavigate } from 'react-router-dom'
-import Comments from './Comments.jsx'
+import Thisishuge from './Comments.jsx'
 import useStyles from './styles'
 
 function PostDetails() {
@@ -56,7 +56,7 @@ function PostDetails() {
         </div>
       </div>
       <Divider style={{ margin: '20px 0' }} />
-          <Comments post={post} />
+          <Thisishuge post={post} />
       <Divider style={{ margin: '20px 0' }} />
       {!!recommendedPosts.length && (
         <div>

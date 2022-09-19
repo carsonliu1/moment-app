@@ -15,10 +15,10 @@ function Comments({ post }) {
 
   const handleClick = async () => {
     const resultComment = `${user.result.name}: ${comment}`
-   const newComments = await dispatch(commentPost(resultComment, post._id))
-   setComments(newComments)
-   setComment('')
-   commentsRef.current.scrollIntoView({ behavior: 'smooth' })
+    const newComments = await dispatch(commentPost(resultComment, post._id))
+    setComments(newComments)
+    setComment('')
+    commentsRef.current.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -30,14 +30,14 @@ function Comments({ post }) {
           <br></br>
           <br></br>
           {comments.map((comment, index) => (
-              <Typography key={index} variant='subtitle1'>
-                <strong>{comment.split(': ')[0]}: </strong>
-                {comment.split(': ')[1]}
-              </Typography>
+            <Typography key={index} variant='subtitle1'>
+              <strong>{comment.split(': ')[0]}: </strong>
+              {comment.split(': ')[1]}
+            </Typography>
           ))}
-          <div ref={commentsRef}/>
+          <div ref={commentsRef} />
         </div>
-        {user?.result?.name && <div style={{width: '50%'}}>
+        {user?.result?.name && <div style={{ width: '50%' }}>
           <TextField
             className={classes.commentForm}
             label='Comment'
@@ -47,7 +47,7 @@ function Comments({ post }) {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             disabled={!user?.result}
-            >
+          >
           </TextField>
           <Button className={classes.commentButton} disabled={!comment} variant='contained' onClick={handleClick}>
             Comment
